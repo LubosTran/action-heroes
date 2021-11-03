@@ -1,7 +1,11 @@
 import React, { FC } from "react";
-import { Avatar, Input, List } from "antd";
-import "./styles/App.css";
-import { Hero } from "./components/Content/Content";
+import { Input, Avatar, List } from "antd";
+
+export interface Hero {
+  id: number;
+  name: string;
+  image: string;
+}
 
 const App: FC = () => {
   const data = [] as Hero[];
@@ -15,7 +19,7 @@ const App: FC = () => {
           <List.Item>
             <List.Item.Meta
               avatar={<Avatar size="default" src={`${item.image}`} />}
-              title={item.name}
+              title={<a href="https://ant.design">{item.name}</a>}
             />
           </List.Item>
         )}
