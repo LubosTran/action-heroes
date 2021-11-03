@@ -1,14 +1,17 @@
 import React, { FC } from "react";
 import { Input, Avatar, List } from "antd";
 
-export interface Hero {
+export type Hero = {
   id: number;
   name: string;
   image: string;
+};
+
+interface Props {
+  data: Hero[];
 }
 
-const App: FC = () => {
-  const data = [] as Hero[];
+const Content: FC<Props> = ({ data }) => {
   return (
     <>
       <Input placeholder="What hero are you looking for?" onChange={() => {}} />
@@ -19,7 +22,7 @@ const App: FC = () => {
           <List.Item>
             <List.Item.Meta
               avatar={<Avatar size="default" src={`${item.image}`} />}
-              title={<a href="https://ant.design">{item.name}</a>}
+              title={item.name}
             />
           </List.Item>
         )}
@@ -28,4 +31,4 @@ const App: FC = () => {
   );
 };
 
-export default App;
+export default Content;
