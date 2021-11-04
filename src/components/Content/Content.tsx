@@ -1,10 +1,17 @@
 import React, { FC } from "react";
 import { Input, Avatar, List } from "antd";
 
+type HeroImages = {
+  lg: string;
+  md: string;
+  sm: string;
+  xs: string;
+};
+
 export type Hero = {
   id: number;
   name: string;
-  image: string;
+  images: HeroImages;
 };
 
 interface Props {
@@ -16,13 +23,15 @@ const Content: FC<Props> = ({ data }) => {
     <>
       <Input placeholder="What hero are you looking for?" onChange={() => {}} />
       <List
+        size="large"
         itemLayout="horizontal"
         dataSource={data}
-        renderItem={(item) => (
+        renderItem={(hero) => (
           <List.Item>
             <List.Item.Meta
-              avatar={<Avatar size="default" src={`${item.image}`} />}
-              title={item.name}
+              avatar={<Avatar size="large" src={`${hero.images.md}`} />}
+              title={hero.name}
+              style={{ alignItems: "center" }}
             />
           </List.Item>
         )}
