@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Input, Avatar, List } from "antd";
 
 type HeroImages = {
@@ -19,13 +19,21 @@ interface Props {
 }
 
 const Content: FC<Props> = ({ data }) => {
+  const [filter, setFilter] = useState("");
+  const onFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFilter(event.target.value.toLowerCase());
+  };
+  const filteredData = data.filter((hero) =>
+    hero.name.toLowerCase().includes(filter)
+  );
+
   return (
     <>
-      <Input placeholder="What hero are you looking for?" onChange={() => {}} />
+      <Input placeholder="What hero are you looking for?" onChange={onFilter} />
       <List
         size="large"
         itemLayout="horizontal"
-        dataSource={data}
+        dataSource={filteredData}
         renderItem={(hero) => (
           <List.Item>
             <List.Item.Meta
