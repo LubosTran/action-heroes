@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react";
-import { Input, Avatar, List } from "antd";
+import { Avatar, List } from "antd";
+import { Background, InputWrapper, ListWrapper } from "./styles";
 
 type HeroImages = {
   lg: string;
@@ -28,23 +29,28 @@ const Content: FC<Props> = ({ data }) => {
   );
 
   return (
-    <>
-      <Input placeholder="What hero are you looking for?" onChange={onFilter} />
-      <List
-        size="large"
-        itemLayout="horizontal"
-        dataSource={filteredData}
-        renderItem={(hero) => (
-          <List.Item>
-            <List.Item.Meta
-              avatar={<Avatar size="large" src={`${hero.images.md}`} />}
-              title={hero.name}
-              style={{ alignItems: "center" }}
-            />
-          </List.Item>
-        )}
+    <Background>
+      <InputWrapper
+        placeholder="What hero are you looking for?"
+        onChange={onFilter}
       />
-    </>
+      <ListWrapper>
+        <List
+          size="large"
+          itemLayout="horizontal"
+          dataSource={filteredData}
+          renderItem={(hero) => (
+            <List.Item>
+              <List.Item.Meta
+                avatar={<Avatar size="large" src={`${hero.images.md}`} />}
+                title={hero.name}
+                style={{ alignItems: "center" }}
+              />
+            </List.Item>
+          )}
+        />
+      </ListWrapper>
+    </Background>
   );
 };
 
