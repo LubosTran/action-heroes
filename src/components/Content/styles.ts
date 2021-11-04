@@ -24,7 +24,8 @@ export const ListWrapper = styled.div`
   border-radius: 10px;
   border: 5px solid;
   position: absolute;
-  bottom: 20px;
+  top: 35%;
+  bottom: 5%;
   scrollbar-width: none;
   -ms-overflow-style: none;
   .ant-list {
@@ -59,7 +60,7 @@ export const InputWrapper = styled.input`
   font-weight: bold;
   text-align: center;
   position: absolute;
-  top: 50px;
+  top: 20%;
   :focus-visible {
     outline: none;
   }
